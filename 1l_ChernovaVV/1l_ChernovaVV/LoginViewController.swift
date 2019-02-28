@@ -79,5 +79,4 @@ class LoginViewController: UIViewController {
     @objc func hideKeyboard() {
         self.scrollView?.endEditing(true)
     }
-
 }
