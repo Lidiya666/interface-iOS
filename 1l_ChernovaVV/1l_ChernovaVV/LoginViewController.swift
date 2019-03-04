@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
         let password = passwordInput.text!
         
         // Проверяем, верны ли они
-        if login == "admin" && password == "123456" {
+        if login == "admin" && password == "qwerty" {
             print("успешная авторизация")
         } else {
             print("неуспешная авторизация")
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         let login = loginInput.text!
         let password = passwordInput.text!
         
-        if login == "admin" && password == "123456" {
+        if login == "admin" && password == "qwerty" {
             return true
         } else {
             return false
