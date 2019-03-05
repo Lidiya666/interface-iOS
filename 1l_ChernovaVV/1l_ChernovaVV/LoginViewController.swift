@@ -16,7 +16,10 @@ class LoginViewController: UIViewController {
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
     }
     
-    @IBAction func loginButtonPressed(_ sender: Any) {
+    /*
+     Функция, исполняющая проверку без сегвея, но с активностью кнопки Sign In
+     
+     @IBAction func loginButtonPressed(_ sender: Any) {
         // Получаем текст логина
         let login = loginInput.text!
         // Получаем текст-пароль
@@ -28,7 +31,7 @@ class LoginViewController: UIViewController {
         } else {
             print("неуспешная авторизация")
         }
-    }
+    }*/
     
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
