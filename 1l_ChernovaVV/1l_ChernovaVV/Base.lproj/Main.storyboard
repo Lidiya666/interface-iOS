@@ -63,7 +63,6 @@
                                         <rect key="frame" x="15" y="283" width="290" height="30"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
-                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Xr-4N-vHU"/>
                                             <segue destination="gO2-on-H77" kind="presentation" id="3yO-zF-Y9f"/>
                                         </connections>
                                     </button>
@@ -191,6 +190,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gO2-on-H77" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jVD-ge-Pnq">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
