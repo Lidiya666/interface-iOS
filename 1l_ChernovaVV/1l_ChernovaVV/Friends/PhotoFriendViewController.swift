@@ -11,6 +11,7 @@ import UIKit
 class PhotoFriendViewController: UIViewController {
     
     var photoNames = [String]()
+    var qtyLikes = 783
 
     @IBOutlet weak var photoFriend: UICollectionView!
     
@@ -42,7 +43,14 @@ extension PhotoFriendViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoFriendCell", for: indexPath) as! PhotoFriendCollectionViewCell
         cell.photoFriend.image = UIImage(named: "0\(photoNames[0])")
-
+        
+        cell.qtyLike.text = "\(qtyLikes)"
+        
+        //let button = UIButton(type: .custom)
+        let image = UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate)
+        cell.likeButton.setImage(image, for: .normal)
+        cell.likeButton.tintColor = UIColor.black
+        
         return cell
     }
     
