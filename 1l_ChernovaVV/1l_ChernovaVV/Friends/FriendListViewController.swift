@@ -8,9 +8,19 @@
 
 import UIKit
 
+struct Friend {
+    let image: String
+    let name: String
+}
+
 class FriendListViewController: UIViewController {
     
-    var friends = ["Иван Андреич", "Ульяна Байбак", "Злобный Боря", "Макс Голодный", "Аня Джулай"]
+    var friends = [Friend(image: "01", name: "Иван Андреич"),
+                   Friend(image: "02", name: "Ульяна Байбак"),
+                   Friend(image: "03", name: "Злобный Боря"),
+                   Friend(image: "04", name: "Макс Голодный"),
+                   Friend(image: "05", name: "Аня Джулай")]
+    
     var photoFriends = ["01", "02", "03", "04", "05"]
 
     @IBOutlet weak var friendListView: UITableView!
@@ -18,6 +28,9 @@ class FriendListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         friendListView.dataSource = self
+        
+        self.friendListView.tableFooterView = UIView.init()
+
         // Do any additional setup after loading the view.
     }
     
@@ -35,7 +48,7 @@ class FriendListViewController: UIViewController {
                 let dvc = segue.destination as! PhotoFriendViewController
                 // теперь ты имеешь доступ к переменным в этом контроллере
                 // и только те переменные которые ты тут передашь перейду с тобой в новый контроллер
-                dvc.photoNames = [photoFriends[indexPath.row]]
+                dvc.photoNames = [friends[indexPath.row].image]
             }
             
         }
@@ -66,8 +79,10 @@ extension FriendListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendListTableViewCell
-        cell.FriendName.text = friends[indexPath.row]
-        cell.photoFriendMini.image = UIImage(named: photoFriends[indexPath.row])
+        
+        let friend = friends[indexPath.row]
+        cell.FriendName.text = friend.name
+        cell.photoFriendMini.image = UIImage(named: friend.image)
         
         return cell
     }

@@ -16,15 +16,20 @@ class PhotoFriendCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var likeButton: UIButton!
     
-    
     @IBAction func likeChanged(_ sender: Any) {
         guard let qtyLikes = qtyLike.text, var value = Int(qtyLikes) else {
             // report error and then 'return'
             return
         }
         
-        likeButton.tintColor = likeButton.tintColor == UIColor.blue ? UIColor.black : UIColor.blue
-        value = likeButton.tintColor == UIColor.blue ? value - 1 : value + 1
+        likeButton.tintColor = likeButton.tintColor == #colorLiteral(red: 1, green: 0.199475348, blue: 0.2767442465, alpha: 1) ? #colorLiteral(red: 0.75742203, green: 0.7766188383, blue: 0.8110727072, alpha: 1) : #colorLiteral(red: 1, green: 0.199475348, blue: 0.2767442465, alpha: 1)
+        if(likeButton.tintColor == #colorLiteral(red: 1, green: 0.199475348, blue: 0.2767442465, alpha: 1)) {
+            value = value + 1
+            qtyLike.textColor = #colorLiteral(red: 1, green: 0.199475348, blue: 0.2767442465, alpha: 1)
+        } else {
+            value = value - 1
+            qtyLike.textColor = #colorLiteral(red: 0.4056248963, green: 0.4397159219, blue: 0.4782559872, alpha: 1)
+        }
         
         qtyLike.text = String(value)
     }
