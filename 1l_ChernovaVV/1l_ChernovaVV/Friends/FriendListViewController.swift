@@ -8,36 +8,67 @@
 
 import UIKit
 
-struct Friend {
-    let image: String
-    let name: String
-}
-
 class FriendListViewController: UIViewController {
     
-    var friends = [Friend(image: "01", name: "Иван Андреич"),
-                   Friend(image: "02", name: "Ульяна Байбак"),
-                   Friend(image: "03", name: "Злобный Боря"),
-                   Friend(image: "04", name: "Макс Голодный"),
-                   Friend(image: "05", name: "Аня Джулай")]
+    var friends = ["А": [Friend(image: "01", name: "Иван Андреич")],
+                   "Б": [Friend(image: "02", name: "Ульяна Байбак"),
+                         Friend(image: "03", name: "Злобный Боря")],
+                   "Г": [Friend(image: "04", name: "Макс Голодный")],
+                   "Д": [Friend(image: "05", name: "Аня Джулай")]]
     
-    var photoFriends = ["01", "02", "03", "04", "05"]
-
+    var filterFriends = [Friend]()
+    var fFriends = [Friend]()
+    
+    var sectionName = [String]()
+    
+    struct Objects {
+        
+        var sectionName : String!
+        var sectionObjects : [Friend]!
+    }
+    
+    struct Friend {
+        let image: String
+        let name: String
+    }
+    
+    var objectArray = [Objects]()
+    
+    let searchController = UISearchController (searchResultsController: nil )
+    
     @IBOutlet weak var friendListView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         friendListView.dataSource = self
+        friendListView.delegate = self
         
         self.friendListView.tableFooterView = UIView.init()
-
-        // Do any additional setup after loading the view.
+        
+        for (key, value) in friends {
+            objectArray.append(Objects(sectionName: key, sectionObjects: value))
+        }
+        
+        objectArray = objectArray.sorted {$0.sectionName < $1.sectionName}
+        
+        for key in friends.keys {
+            sectionName.append(key)
+            
+            guard let data = friends[key] else { continue }
+            
+            for value in data {
+                fFriends.append(value)
+            }
+        }
+        
+        // Настройка контроллера поиска
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Friends"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
-    
-    /*override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // Вернем результат
-        return true
-    }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // если идентификатор segue равно "detailSegue"
@@ -48,43 +79,88 @@ class FriendListViewController: UIViewController {
                 let dvc = segue.destination as! PhotoFriendViewController
                 // теперь ты имеешь доступ к переменным в этом контроллере
                 // и только те переменные которые ты тут передашь перейду с тобой в новый контроллер
-                dvc.photoNames = [friends[indexPath.row].image]
+                if isFiltering() {
+                    dvc.photoNames = [filterFriends[indexPath.row].image]
+                } else {
+                    dvc.photoNames = [objectArray[indexPath.section].sectionObjects[indexPath.row].image]
+                }
             }
             
         }
     }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 extension FriendListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if isFiltering(){
+            return 1
+        } else {
+            return objectArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        if isFiltering() {
+            return filterFriends.count
+        } else {
+            return objectArray[section].sectionObjects.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendListTableViewCell
         
-        let friend = friends[indexPath.row]
-        cell.FriendName.text = friend.name
-        cell.photoFriendMini.image = UIImage(named: friend.image)
+        if isFiltering() {
+            cell.FriendName.text = filterFriends[indexPath.row].name
+            cell.photoFriendMini.image = UIImage(named: filterFriends[indexPath.row].image)
+        } else {
+            cell.FriendName.text = objectArray[indexPath.section].sectionObjects[indexPath.row].name
+            cell.photoFriendMini.image = UIImage(named: objectArray[indexPath.section].sectionObjects[indexPath.row].image)
+        }
+        
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView,
+                           titleForHeaderInSection section: Int) -> String?{
+        if isFiltering() {
+            return nil
+        } else {
+            return objectArray[section].sectionName
+        }
+    }
+}
+
+extension FriendListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableCell(withIdentifier: "TableViewHeaderFriends")
+            return header
+    }
+}
+
+extension FriendListViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+       filterFriends = fFriends.filter({( friend : Friend) -> Bool in
+            return friend.name.lowercased().contains(searchText.lowercased())
+        })
+        
+        friendListView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
 }
