@@ -15,8 +15,27 @@ class LoginViewController: UIViewController {
         //присваиваем его UIScrollView
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
-        //view.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        buttonLoading()
+    }
+    
+    /*
+     Функция, исполняющая проверку без сегвея, но с активностью кнопки Sign In
+     
+     @IBAction func loginButtonPressed(_ sender: Any) {
+        // Получаем текст логина
+        let login = loginInput.text!
+        // Получаем текст-пароль
+        let password = passwordInput.text!
         
+        // Проверяем, верны ли они
+        if login == "admin" && password == "qwerty" {
+            print("успешная авторизация")
+        } else {
+            print("неуспешная авторизация")
+        }
+    }*/
+    
+    func buttonLoading() {
         //темная задняя текстовая метка
         let darkTextLabel = UILabel()
         darkTextLabel.text = "..."
@@ -34,7 +53,7 @@ class LoginViewController: UIViewController {
         shinyTextLabel.font = UIFont.systemFont(ofSize: 180)
         shinyTextLabel.frame = CGRect(x: 0, y: 50, width: view.frame.width, height: 500)
         shinyTextLabel.textAlignment = .center
-//        shinyTextLabel.backgroundColor = .red
+        //        shinyTextLabel.backgroundColor = .red
         
         view.addSubview(shinyTextLabel)
         
@@ -58,26 +77,8 @@ class LoginViewController: UIViewController {
         animation.repeatCount = Float.infinity
         
         gradientLayer.add(animation, forKey: "-")
-//        view.layer.addSublayer(gradientLayer)
+        //        view.layer.addSublayer(gradientLayer)
     }
-    
-    /*
-     Функция, исполняющая проверку без сегвея, но с активностью кнопки Sign In
-     
-     @IBAction func loginButtonPressed(_ sender: Any) {
-        // Получаем текст логина
-        let login = loginInput.text!
-        // Получаем текст-пароль
-        let password = passwordInput.text!
-        
-        // Проверяем, верны ли они
-        if login == "admin" && password == "qwerty" {
-            print("успешная авторизация")
-        } else {
-            print("неуспешная авторизация")
-        }
-    }*/
-    
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // Проверяем данные

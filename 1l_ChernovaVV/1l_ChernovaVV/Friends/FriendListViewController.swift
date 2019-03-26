@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Friend {
+    let image: String
+    let name: String
+}
+
 class FriendListViewController: UIViewController {
     
     var friends = ["А": [Friend(image: "01", name: "Иван Андреич")],
@@ -25,11 +30,6 @@ class FriendListViewController: UIViewController {
         
         var sectionName : String!
         var sectionObjects : [Friend]!
-    }
-    
-    struct Friend {
-        let image: String
-        let name: String
     }
     
     var objectArray = [Objects]()
@@ -80,9 +80,9 @@ class FriendListViewController: UIViewController {
                 // теперь ты имеешь доступ к переменным в этом контроллере
                 // и только те переменные которые ты тут передашь перейду с тобой в новый контроллер
                 if isFiltering() {
-                    dvc.photoNames = [filterFriends[indexPath.row].image]
+                    dvc.friendNames = [filterFriends[indexPath.row].name]
                 } else {
-                    dvc.photoNames = [objectArray[indexPath.section].sectionObjects[indexPath.row].image]
+                    dvc.friendNames = [objectArray[indexPath.section].sectionObjects[indexPath.row].name]
                 }
             }
             
