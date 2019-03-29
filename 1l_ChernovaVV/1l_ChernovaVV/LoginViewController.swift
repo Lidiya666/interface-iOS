@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
         shinyTextLabel.font = UIFont.systemFont(ofSize: 180)
         shinyTextLabel.frame = CGRect(x: 0, y: 50, width: view.frame.width, height: 500)
         shinyTextLabel.textAlignment = .center
-        //        shinyTextLabel.backgroundColor = .red
+//                shinyTextLabel.backgroundColor = .red
         
         view.addSubview(shinyTextLabel)
         
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
         animation.repeatCount = Float.infinity
         
         gradientLayer.add(animation, forKey: "-")
-        //        view.layer.addSublayer(gradientLayer)
+//        view.layer.addSublayer(gradientLayer)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

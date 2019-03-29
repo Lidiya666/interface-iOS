@@ -22,21 +22,27 @@ class AddGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GroupsListView.dataSource = self
-
+        self.navigationController?.delegate = self
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+
+extension AddGroupViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push {
+            return CustomPushAnimator()
+        } else if operation == .pop {
+            return CustomPopAnimator()
+        }
+        return nil
     }
-    */
-
+    
+    
 }
 
 extension AddGroupViewController: UITableViewDataSource {

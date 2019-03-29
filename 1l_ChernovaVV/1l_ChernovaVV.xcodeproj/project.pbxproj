@@ -17,6 +17,9 @@
 		8300E303223345FE0090D00F /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E302223345FE0090D00F /* AddGroupViewController.swift */; };
 		830EAC672240E73F0047B98A /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830EAC662240E73F0047B98A /* NewsListViewController.swift */; };
 		830EAC692240EB750047B98A /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830EAC682240EB750047B98A /* NewsListTableViewCell.swift */; };
+		832980B8224E1F1C009E1A9E /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832980B7224E1F1C009E1A9E /* CustomPushAnimator.swift */; };
+		832980BA224E1FAE009E1A9E /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832980B9224E1FAE009E1A9E /* CustomPopAnimator.swift */; };
+		8366004C224D296700C2E635 /* AnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366004B224D296700C2E635 /* AnimatedTransitioning.swift */; };
 		83EDE8EE2227CBAE004B7147 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EDE8ED2227CBAE004B7147 /* AppDelegate.swift */; };
 		83EDE8F32227CBAE004B7147 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EDE8F12227CBAE004B7147 /* Main.storyboard */; };
 		83EDE8F62227CBAE004B7147 /* _l_ChernovaVV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83EDE8F42227CBAE004B7147 /* _l_ChernovaVV.xcdatamodeld */; };
@@ -47,6 +50,9 @@
 		8300E302223345FE0090D00F /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		830EAC662240E73F0047B98A /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		830EAC682240EB750047B98A /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
+		832980B7224E1F1C009E1A9E /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
+		832980B9224E1FAE009E1A9E /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
+		8366004B224D296700C2E635 /* AnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTransitioning.swift; sourceTree = "<group>"; };
 		83EDE8EA2227CBAE004B7147 /* 1l_ChernovaVV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1l_ChernovaVV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EDE8ED2227CBAE004B7147 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83EDE8F22227CBAE004B7147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 				83EDE8F92227CBAF004B7147 /* LaunchScreen.storyboard */,
 				83EDE8FC2227CBAF004B7147 /* Info.plist */,
 				83EDE8F42227CBAE004B7147 /* _l_ChernovaVV.xcdatamodeld */,
+				8366004B224D296700C2E635 /* AnimatedTransitioning.swift */,
+				832980B7224E1F1C009E1A9E /* CustomPushAnimator.swift */,
+				832980B9224E1FAE009E1A9E /* CustomPopAnimator.swift */,
 			);
 			path = 1l_ChernovaVV;
 			sourceTree = "<group>";
@@ -257,9 +266,12 @@
 				8300E303223345FE0090D00F /* AddGroupViewController.swift in Sources */,
 				8300E2F12232FA240090D00F /* FriendListViewController.swift in Sources */,
 				83EDE9112227CE08004B7147 /* LoginViewController.swift in Sources */,
+				832980B8224E1F1C009E1A9E /* CustomPushAnimator.swift in Sources */,
 				830EAC672240E73F0047B98A /* NewsListViewController.swift in Sources */,
 				83EDE8F62227CBAE004B7147 /* _l_ChernovaVV.xcdatamodeld in Sources */,
 				8300E301223345E20090D00F /* AddGroupTableViewCell.swift in Sources */,
+				832980BA224E1FAE009E1A9E /* CustomPopAnimator.swift in Sources */,
+				8366004C224D296700C2E635 /* AnimatedTransitioning.swift in Sources */,
 				83EDE8EE2227CBAE004B7147 /* AppDelegate.swift in Sources */,
 				8300E2FF223343100090D00F /* GroupsTableViewCell.swift in Sources */,
 				8300E2FD223341670090D00F /* GroupsViewController.swift in Sources */,

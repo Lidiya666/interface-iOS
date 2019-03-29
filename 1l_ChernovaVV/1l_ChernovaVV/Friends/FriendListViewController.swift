@@ -43,6 +43,10 @@ class FriendListViewController: UIViewController {
         friendListView.dataSource = self
         friendListView.delegate = self
         
+        
+        self.navigationController?.delegate = self
+
+        
         self.friendListView.tableFooterView = UIView.init()
         
         for (key, value) in friends {
@@ -90,6 +94,18 @@ class FriendListViewController: UIViewController {
     }
 
 }
+
+extension FriendListViewController: UINavigationControllerDelegate {
+
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        guard operation == .push else { return AnimatedTransitioningForPop() }
+        return AnimatedTransitioningForPush()
+
+    }
+
+}
+
 
 extension FriendListViewController: UITableViewDataSource {
     
