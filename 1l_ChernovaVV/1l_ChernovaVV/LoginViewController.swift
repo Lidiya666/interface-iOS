@@ -14,26 +14,47 @@ class LoginViewController: UIViewController {
         
         //присваиваем его UIScrollView
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
-        
-        buttonLoading()
     }
     
-    /*
-     Функция, исполняющая проверку без сегвея, но с активностью кнопки Sign In
+    
+     //Функция, исполняющая проверку без сегвея, но с активностью кнопки Sign In
      
      @IBAction func loginButtonPressed(_ sender: Any) {
-        // Получаем текст логина
+        // Проверяем, верны ли введенные данные
+        
+        buttonLoading()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        }
+        
+        let checkResult = checkUserData()
+        
+        if !checkResult {
+            showLoginError()
+        }
+    }
+    
+    func checkUserData() -> Bool {
         let login = loginInput.text!
-        // Получаем текст-пароль
         let password = passwordInput.text!
         
-        // Проверяем, верны ли они
-        if login == "admin" && password == "qwerty" {
-            print("успешная авторизация")
+        if login == "1" && password == "1" {
+            return true
         } else {
-            print("неуспешная авторизация")
+            return false
         }
-    }*/
+    }
+    
+    func showLoginError() {
+        // Создаем контроллер
+        let alter = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+        // Создаем кнопку для UIAlertController
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        // Добавляем кнопку на UIAlertController
+        alter.addAction(action)
+        // Показываем UIAlertController
+        present(alter, animated: true, completion: nil)
+    }
     
     func buttonLoading() {
         //темная задняя текстовая метка
@@ -78,42 +99,6 @@ class LoginViewController: UIViewController {
         
         gradientLayer.add(animation, forKey: "-")
 //        view.layer.addSublayer(gradientLayer)
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // Проверяем данные
-        
-        let checkResult = checkUserData()
-        
-        // Если данные неверны, покажем ошибку
-        if !checkResult {
-            showLoginError()
-        }
-        
-        // Вернем результат
-        return checkResult
-    }
-    
-    func checkUserData() -> Bool {
-        let login = loginInput.text!
-        let password = passwordInput.text!
-        
-        if login == "admin" && password == "qwerty" {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func showLoginError() {
-        // Создаем контроллер
-        let alter = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
-        // Создаем кнопку для UIAlertController
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        // Добавляем кнопку на UIAlertController
-        alter.addAction(action)
-        // Показываем UIAlertController
-        present(alter, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

@@ -37,6 +37,10 @@ class PhotoFriendViewController: UIViewController {
                 photosFriend.append(photoFriends[i])
             }
         }
+        
+        let width = view.frame.width
+        let layout = photoFriend.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
     }
     
     @objc func tappedMe()

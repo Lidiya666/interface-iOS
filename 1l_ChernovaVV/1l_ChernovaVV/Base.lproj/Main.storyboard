@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gO2-on-H77">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -63,6 +63,7 @@
                                         <rect key="frame" x="15" y="283" width="290" height="30"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
+                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vPx-kQ-uxE"/>
                                             <segue destination="gO2-on-H77" kind="presentation" id="3yO-zF-Y9f"/>
                                         </connections>
                                     </button>
@@ -337,12 +338,15 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="8ax-Zr-YP2" firstAttribute="leading" secondItem="0fx-vP-56g" secondAttribute="leading" id="3C8-xc-yhn"/>
                                             <constraint firstItem="8ax-Zr-YP2" firstAttribute="width" secondItem="0fx-vP-56g" secondAttribute="width" id="9bk-pq-kA6"/>
                                             <constraint firstAttribute="width" secondItem="8ax-Zr-YP2" secondAttribute="height" multiplier="1:1" id="BJt-AX-wLN"/>
                                             <constraint firstItem="fLT-qZ-I0y" firstAttribute="top" secondItem="8ax-Zr-YP2" secondAttribute="bottomMargin" constant="10" id="KAq-0K-5hH"/>
+                                            <constraint firstAttribute="trailing" secondItem="8ax-Zr-YP2" secondAttribute="trailing" id="RN0-J1-uEk"/>
                                             <constraint firstItem="Yi5-uj-t8P" firstAttribute="top" secondItem="8ax-Zr-YP2" secondAttribute="bottomMargin" constant="10" id="SMa-ov-Cix"/>
                                             <constraint firstItem="8ax-Zr-YP2" firstAttribute="leading" secondItem="0fx-vP-56g" secondAttribute="leading" id="SQL-Xp-eMl"/>
                                             <constraint firstItem="8ax-Zr-YP2" firstAttribute="top" secondItem="0fx-vP-56g" secondAttribute="top" id="VKb-Ls-7yn"/>
+                                            <constraint firstItem="8ax-Zr-YP2" firstAttribute="top" secondItem="0fx-vP-56g" secondAttribute="top" id="Wn3-a0-Dq0"/>
                                             <constraint firstItem="fLT-qZ-I0y" firstAttribute="centerY" secondItem="Yi5-uj-t8P" secondAttribute="centerY" id="Wo1-8S-YXP"/>
                                             <constraint firstItem="fLT-qZ-I0y" firstAttribute="leading" secondItem="Yi5-uj-t8P" secondAttribute="trailingMargin" constant="20" id="afb-7t-EWG"/>
                                             <constraint firstAttribute="trailing" secondItem="8ax-Zr-YP2" secondAttribute="trailing" id="hwI-3n-eAL"/>
@@ -360,9 +364,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NeP-2D-KMN" firstAttribute="bottom" secondItem="of9-px-RAw" secondAttribute="bottom" id="7qE-vD-8I6"/>
+                            <constraint firstItem="NeP-2D-KMN" firstAttribute="bottom" secondItem="of9-px-RAw" secondAttribute="bottom" id="FEP-DE-hvS"/>
                             <constraint firstItem="NeP-2D-KMN" firstAttribute="top" secondItem="of9-px-RAw" secondAttribute="top" id="I8g-k0-SqX"/>
                             <constraint firstItem="NeP-2D-KMN" firstAttribute="width" secondItem="UYV-TZ-UsD" secondAttribute="width" id="JSI-sc-z8g"/>
+                            <constraint firstItem="NeP-2D-KMN" firstAttribute="trailing" secondItem="of9-px-RAw" secondAttribute="trailing" id="bZa-0D-wgA"/>
                             <constraint firstItem="NeP-2D-KMN" firstAttribute="leading" secondItem="UYV-TZ-UsD" secondAttribute="leading" id="grf-eR-g4d"/>
+                            <constraint firstItem="NeP-2D-KMN" firstAttribute="leading" secondItem="of9-px-RAw" secondAttribute="leading" id="qlO-b6-h5z"/>
+                            <constraint firstItem="NeP-2D-KMN" firstAttribute="top" secondItem="of9-px-RAw" secondAttribute="top" id="tce-C8-DOw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="of9-px-RAw"/>
                     </view>

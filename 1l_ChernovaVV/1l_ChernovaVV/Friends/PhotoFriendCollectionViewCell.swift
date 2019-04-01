@@ -37,6 +37,8 @@ class PhotoFriendCollectionViewCell: UICollectionViewCell {
         qtyLike.text = String(value)
     }
     
+    
+    
 }
 
 extension UIView {
