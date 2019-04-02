@@ -26,11 +26,7 @@ class PhotoFriendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoFriend.dataSource = self
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(PhotoFriendViewController.tappedMe))
-        photoFriend.addGestureRecognizer(tap)
-        photoFriend.isUserInteractionEnabled = true
+        photoFriend.dataSource = self 
         
         for i in 0...photoFriends.count - 1 {
             if photoFriends[i].name == friendNames[0] {
@@ -41,18 +37,6 @@ class PhotoFriendViewController: UIViewController {
         let width = view.frame.width
         let layout = photoFriend.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
-    }
-    
-    @objc func tappedMe()
-    {
-        let pulse = CASpringAnimation(keyPath: "transform.scale")
-        pulse.duration = 0.8
-        pulse.fromValue = 0.96
-        pulse.toValue = 1.0
-        pulse.autoreverses = true
-        pulse.initialVelocity = 0.7
-        pulse.damping = 0.1
-        photoFriend.layer.add(pulse, forKey: nil)
     }
 }
 

@@ -37,7 +37,30 @@ class PhotoFriendCollectionViewCell: UICollectionViewCell {
         qtyLike.text = String(value)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        tap.numberOfTapsRequired = 1
+        photoFriend.addGestureRecognizer(tap)
+        
+    }
     
+    @objc func tapped() {
+        
+        let animated = CASpringAnimation(keyPath: "bounds")
+        animated.fromValue = self.photoFriend.bounds
+        let width = self.photoFriend.bounds.width
+        let height = self.photoFriend.bounds.height
+        animated.toValue = CGRect(x: 0, y: 0, width: width - 5, height: height - 5)
+        animated.damping = 0
+        animated.initialVelocity = 5
+        animated.stiffness = 1000
+        animated.mass = 2
+        animated.duration = 0.5
+        self.photoFriend.layer.add(animated, forKey: nil)
+        
+    }
     
 }
 
