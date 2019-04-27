@@ -1,5 +1,15 @@
 import UIKit
 
+class Session {
+    
+    static let instanse = Session()
+    
+    private init(){}
+    
+    var token = ""
+    var userId = 0
+}
+
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -32,6 +42,10 @@ class LoginViewController: UIViewController {
         if !checkResult {
             showLoginError()
         }
+        
+        let session = Session.instanse
+        session.token = "admin"
+        session.userId = 0
     }
     
     func checkUserData() -> Bool {

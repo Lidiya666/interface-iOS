@@ -43,6 +43,9 @@ class FriendListViewController: UIViewController {
         friendListView.dataSource = self
         friendListView.delegate = self
         
+        let session = Session.instanse
+        print(session.token)
+        
         
         self.navigationController?.delegate = self
 

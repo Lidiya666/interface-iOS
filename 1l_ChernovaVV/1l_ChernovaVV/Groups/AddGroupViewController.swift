@@ -22,7 +22,6 @@ class AddGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GroupsListView.dataSource = self
-        self.navigationController?.delegate = self
         // Do any additional setup after loading the view.
     }
     
